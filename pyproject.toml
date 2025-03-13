@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "ifood-data-analyst-case"
+version = "0.1.0"
+description = "ifood data analyst technical case"
+authors = ["henriquehashimoto <henriquehashimoto518@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pandas = "^2.2.3"
+jupyter = "^1.1.1"
+ipykernel = "^6.29.5"
+notebook = "^7.3.2"
+requests = "^2.32.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
