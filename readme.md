@@ -49,3 +49,5 @@ poetry run python -m ipykernel install --user --name=ifood_case_env --display-na
 # How this case was built
 
 1. Donwload the datasets trough the script `src/data/01_data_inestion.py`
+   1. Execute: `poetry run python src/data/01_data_ingestion.py`
+2. 
