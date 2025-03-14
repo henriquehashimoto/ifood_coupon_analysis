@@ -7,7 +7,6 @@ import pandas as pd
 import requests
 from pathlib import Path
 import io
-from urllib3 import response
 
 # Define constants
 raw_dir = Path("data/raw")
@@ -70,6 +69,7 @@ def extract_files(file_name:str, file_type:str, read_path:Path=raw_dir, extract_
         df = pd.json_normalize(pd.read_json("file.json"))
     
         return df.to_parquet(path_extract + '.parquet', index=False, compression="gzip")
+
 
     # Extract if the compacted file is a tar csv
     if file_type == 'tar_csv':
