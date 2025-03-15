@@ -12,7 +12,7 @@ import io
 raw_dir = Path("data/raw")
 extract_dir = Path("data/extracted")
 URLS = {
-    # 'orders.json.gz': "https://data-architect-test-source.s3-sa-east-1.amazonaws.com/order.json.gz",
+    'orders.json.gz': "https://data-architect-test-source.s3-sa-east-1.amazonaws.com/order.json.gz",
     'consumers.csv.gz': "https://data-architect-test-source.s3-sa-east-1.amazonaws.com/consumer.csv.gz",
     'restaurants.csv.gz': "https://data-architect-test-source.s3-sa-east-1.amazonaws.com/restaurant.csv.gz",
     'ab_test.tar.gz': "https://data-architect-test-source.s3-sa-east-1.amazonaws.com/ab_test_ref.tar.gz"
@@ -64,11 +64,22 @@ def extract_files(file_name:str, file_type:str, read_path:Path=raw_dir, extract_
 
     # Extract if the compacted file is a gzip json
     if file_type == 'gzip_json':
+        # Read file .gz and process json line by lineLer o arquivo .gz e processar JSON linha por linha
+        records = []
         with gzip.open(path_read, 'rt', encoding='utf-8') as f:
-            df = pd.DataFrame(json.load(f))
-        df = pd.json_normalize(pd.read_json("file.json"))
-    
-        return df.to_parquet(path_extract + '.parquet', index=False, compression="gzip")
+            for line in f:
+                try:
+                    # Parsear cada linha como um objeto JSON
+                    record = json.loads(line.strip())
+                    records.append(record)
+                except json.JSONDecodeError as e:
+                    print(f"Erro ao processar linha: {e}")
+        
+        # Convert to DF
+        df = pd.DataFrame(records)
+        
+                
+        return df.to_parquet(path_extract + 'parquet', index=False, compression="gzip")
 
 
     # Extract if the compacted file is a tar csv
