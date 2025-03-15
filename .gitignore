@@ -1,2 +1,4 @@
 .venv
-*orders*
+data/extracted/**
+data/processed/**
+data/raw/**
