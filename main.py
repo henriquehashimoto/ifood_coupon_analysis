@@ -206,15 +206,15 @@ def process_json_file(filename, file_name_only, path_extract):
 #==============================
 def main():
     """
-    Execute the complete ETL pipeline.
+    Execute the complete ETL pipeline
     
     The pipeline consists of three main steps:
-    1. Extract - Downloads and extracts data from various sources
+    1. Extract - Downloads and extracts data from S3
     2. Transform - Cleans and processes the extracted data
        - Transformations are applied to specific columns based on data type and requirements
        - For one-time analysis, manual transformations are applied (ex.: explicit select which columns I want to convert)
-       - For production/scheduled ETL, a more automated approach would be implemented; being a selected trade-off
-    3. Load - Saves the transformed data in parquet format
+       - For production/scheduled ETL, a more automated approach would be implemented; being a selected trade-off due to time management
+    3. Load - Saves the transformed data in parquet format for better performance and storage
     
     Data Sources:
         - Orders (JSON)
@@ -247,8 +247,8 @@ def main():
                 elif ".csv.gz" in filename:
                     process_csv_file(filename, file_name_only, path_extract)
                 
-                # elif ".json.gz" in filename:
-                #     process_json_file(filename, file_name_only, path_extract)
+                elif ".json.gz" in filename:
+                    process_json_file(filename, file_name_only, path_extract)
                 
                 else:
                     logger.warning(f"Unsupported file format: {filename}")
@@ -260,7 +260,7 @@ def main():
             logger.error(f"Error processing {filename}: {str(e)}", exc_info=True)
     
     end_time = datetime.now()
-    logger.info(f"ETL pipeline completed in {end_time - start_time}")    
+    logger.info(f"ETL pipeline completed in {end_time - start_time}")
 
 
 
