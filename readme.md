@@ -10,6 +10,8 @@ Este repositório contém minha solução para o case técnico de Data Analytics
 - `reports/`: Relatório final e visualizações
 - `tests/`: Some tests to understand the usage, functions and data overall
 
+
+```bash
 ifood_data_analyst_case/
 │
 ├── data/                           # Data storage directory
@@ -42,6 +44,7 @@ ifood_data_analyst_case/
 ├── poetry.lock                     # Poetry dependency lock file
 ├── pyproject.toml                  # Project configuration and dependencies
 └── readme.md                       # Project documentation
+```
 
 ### Pré-requisitos
 - Python 3.12 ou superior
