@@ -193,7 +193,7 @@ def process_json_file(filename, file_name_only, path_extract):
     # Step 3: Load data
     #--------------
     logger.info(f"Step 3: Loading transformed {file_name_only} data")
-    load_data(df_transformed, file_name_only)
+    load_data(df_transformed, f"{name}_processed")
     
     # Free memory
     del df_transformed
