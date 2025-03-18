@@ -1,4 +1,7 @@
+.git
 .venv
-/data/extracted/**
-/data/processed/**
-/data/raw/**
+/data/extracted/**.parquet
+/data/processed/**.parquet
+/data/raw/**.tar.gz
+/data/raw/**.csv.gz
+/data/raw/**.json.gz
