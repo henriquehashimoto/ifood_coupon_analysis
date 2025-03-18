@@ -123,6 +123,7 @@ IFood business open the door for multiple opportunity for data analysis, being a
 
 But narrowing down, here a list of the "next steps" that I'd recommend to do with this analysis (besides the proposed A/B test): 
 
+- Do the same segmentation and deep analysis that I did for the group "Hybrid Segments" for the other groups
 - Churn analysis - understand if the campaign helped in prevent churn 
 - Multi "category" user - analysis to see if there's any difference in behavior of users that consume different types of restaurants or even different types of iFood services (like supermarket delivery). And if this campaign helped to increase the number of "multi category" users
 - Cohort Analysis: Track long-term effects by analyzing customer behavior 30/60/90 days post-campaign
