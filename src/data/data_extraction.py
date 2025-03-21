@@ -175,5 +175,3 @@ def extract_files(file_name:str, file_type:str, read_path:Path=raw_dir, extract_
 
 #     # end_time = datetime.now()
 #     # logger.info(f"Data extraction process completed in {end_time - start_time}")
-
-

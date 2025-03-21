@@ -49,13 +49,3 @@ def load_data(df: pd.DataFrame, file_name:str):
 
 
 
-
-# # Example usage:
-# # transformed_df = pd.read_csv("transformed_data.csv")
-# data = {
-#     'A': [1, 2, None, 4],
-#     'B': [None, 2, 3, 4],
-#     'C': [1, 2, 3, 4]
-# }
-# df = pd.DataFrame(data)
-# load_data(df, 'somehtindash')

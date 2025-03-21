@@ -3,7 +3,8 @@
 Please, read until the end to better understand the decision making and thought process.
 
 
-Este repositório contém minha solução para o case técnico de Data Analytics do iFood, focado na análise de um teste A/B de estratégia de cupons para retenção de usuários.
+This repository contains my solution for iFood's Data Analytics technical case, focused on analyzing an A/B test of a coupon strategy for user retention.
+
 
 ### Estrutura do Projeto
 
@@ -42,15 +43,15 @@ ifood_data_analyst_case/
 └── readme.md                       # Project documentation
 ```
 
-### Pré-requisitos
-- Python 3.12 ou superior
-- Poetry (gerenciador de pacotes e ambientes)
+### Prerequisites
+- Python 3.12 ou higher
+- Poetry (library that manages packages)
 
 
-### Instalação 
+### Instalation 
 
 ```bash
-# Clone o repositório
+# Clone the repo
 git clone https://github.com/seu-usuario/ifood-case-tecnico.git
 cd ifood-case-tecnico
 ```
@@ -67,14 +68,6 @@ poetry shell
 poetry run python -m ipykernel install --user --name=ifood_case_env --display-name "Python (iFood Env)" 
 ```
 
-### To execute a .py file
-`poetry run python script_name.py`
-
-### To execute a .ipynb file
-
-- You can direcly open the .ipynb file in your IDE of choice (e.g. vscode). Or use `poetry run jupyter notebook`
-- In either case, make sure that you selected the right kernel (`Python (iFood Env)`), created on the "Install Dependencies" above
-
 
 # To execute this project
 
@@ -86,18 +79,22 @@ poetry run python -m ipykernel install --user --name=ifood_case_env --display-na
   - `data_extraction.py`
   - `data_transformation.py`
   - `data_load.py`
-  - This should execute ~10min 
+  - This should execute ~10min to 15min
   - Now, you shoud have all necessary files for the rest of the analysis
-
+- Now you can see the notebooks 
+  - `poetry run jupyter notebook notebooks/01_data_exploratory.ipynb`
+  - `poetry run jupyter notebook notebooks/02_ab_test_analysis.ipynb`
+  - `poetry run jupyter notebook notebooks/03_segmentations.ipynb`
 
 
 # How this case was built
 
-1. Donwload the datasets trough the script `src/data/data_extraction.py`
+1. Download the datasets trough the script `src/data/data_extraction.py`
 2. Verified data and understood it, also noted what changes was necesary for transformation script, on `notebooks/01_data_exploratory.ipynb`
 3. Created data `src/data/transformation` to clean and improve the datasets
 4. Created `src/data/data_load` to save transformed data
-5. 
+5. Done the analysis of the A/B Test on `02_ab_test_analysis.ipynb`
+6. Created segmentation on `03_segmentations.ipynb`
 
 
 ## Possible future iterations 

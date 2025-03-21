@@ -19,6 +19,7 @@ duckdb = "^1.2.1"
 pyspark = "^3.5.5"
 logging = "^0.4.9.6"
 scipy = "^1.15.2"
+findspark = "^2.0.1"
 
 
 [build-system]
