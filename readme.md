@@ -1,7 +1,7 @@
 # Análise de Estratégia de Cupons
 
 Please, read until the end to better understand the decision making and thought process.
-
+This code was tested in Windows 10 and Windows 11, one of the decision of using "pure Python" is to be a cross platform code. But, I couldn't test in Mac and Linux, so the behavior may vary.
 
 
 
@@ -44,7 +44,6 @@ ifood_data_analyst_case/
 
 ### Prerequisites
 - Python 3.12 ou higher
-- Poetry (library that manages packages)
 
 
 ### Instalation 
@@ -84,21 +83,22 @@ python -m ipykernel install --user --name=ifood_coupons_env --display-name "Pyth
   - `data_transformation.py`
   - `data_load.py`
   - This should execute ~10min to 15min
-  - Now, you shoud have all necessary files for the rest of the analysis
-- Now you can see the notebooks - To use them, enable the recent-created Kernel `Python (iFood Env)`
-  - `notebooks/01_data_exploratory.ipynb`
-  - `notebooks/02_ab_test_analysis.ipynb`
-  - `notebooks/03_segmentations.ipynb`
+  - With that, you shoud have all necessary files for the rest of the analysis
+- Now you can see the notebooks - To use them, enable the recently created Kernel `Python (iFood Env)`, once you open the notebook, (may be necessary the restart of the IDE or kernel)
+    - For data exploration `notebooks/01_data_exploratory.ipynb`
+    - For A/B test analysis `notebooks/02_ab_test_analysis.ipynb`
+    - For customer segmentation tests and analysis `notebooks/03_segmentations.ipynb`
 
 
 # How this case was built
 
 1. Download the datasets trough the script `src/data/data_extraction.py`
-2. Verified data and understood it, also noted what changes was necesary for transformation script, on `notebooks/01_data_exploratory.ipynb`
+2. Verified data and understood it, also noted what changes was necessary for transformation script, on `notebooks/01_data_exploratory.ipynb`
 3. Created data `src/data/transformation` to clean and improve the datasets
 4. Created `src/data/data_load` to save transformed data
-5. Done the analysis of the A/B Test on `notebooks/02_ab_test_analysis.ipynb`
-6. Created segmentation on `notebooks/03_segmentations.ipynb`
+5. Combine in one ETL on `main.py`
+6. Done the analysis of the A/B Test on `notebooks/02_ab_test_analysis.ipynb`
+7. Created segmentation on `notebooks/03_segmentations.ipynb`
 
 
 ## Possible future iterations 
@@ -110,7 +110,7 @@ This solution was developed as part of a technical case study, and due to time c
 - **Configuration Management** - Move hardcoded values to configuration files. Ex.: URLS dictionary created in `data_extraction.py`. This would provide a single source of truth for configuration values
 - **Error Handling and Validation** -  Implement more robust error handling with specific exception types. Ex.: if "conversions" variable at `main.py` is listing a column name wrong, this must be treated somehow. Usage of Pydantic or Pandera
 - **Logging Enhancements** - Implement structured logging with phisical files as well
-- **Performance Optimization** - Use of pyspark or duckDB on the ETL and `main.py` 
+- **Performance Optimization** - Use of pyspark (if moved to a cluster) or duckDB (if stays in single node) on the ETL and `main.py` 
 
 Besides that, transform into tables for better and easier consumption. 
 
@@ -120,9 +120,8 @@ IFood business open the door for multiple opportunity for data analysis, being a
 
 But narrowing down, here a list of the "next steps" that I'd recommend to do with this analysis (besides the proposed A/B test and segmentation): 
 
-- Do the same segmentation and **deep analysis** that I did for the group "Hybrid Segments" **for the other groups**
 - **Use K-means** to create segmentation based on similar behavior in a determined metric
-- Experiment **Churn Propensity Model** - Groups customers by their likelihood to churn, enabling proactive retention
+- Experiment **Churn Propensity Model** - Groups customers by their likelihood to churn, enabling proactive retention; or a **Churn recovery focused** experiment
 - **Decision Trees** - Creates segments through a series of binary splits based on the most predictive variables
 
 ##### Why RFM instead of these others?
