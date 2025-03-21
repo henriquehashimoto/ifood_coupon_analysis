@@ -94,7 +94,9 @@ def extract_files(file_name:str, file_type:str, read_path:Path=raw_dir, extract_
             logger.info(f"Extracted file already exists: {path_extract}")
             return True
     
+        #=================================
         # Extract if the compacted file is a gzip csv
+        #=================================
         elif file_type == 'gzip_csv':
             logger.info(f"Extracting {file_name} to {path_extract}")
             df = pd.read_csv(path_read, compression='gzip')
@@ -105,7 +107,9 @@ def extract_files(file_name:str, file_type:str, read_path:Path=raw_dir, extract_
             return df
 
 
+        #=================================
         # Extract if the compacted file is a gzip json
+        #=================================
         elif file_type == 'gzip_json':
             logger.info(f"Extracting {file_name} to {path_extract}")
             # Read file .gz and process json line by lineLer o arquivo .gz e processar JSON linha por linha            
@@ -127,7 +131,9 @@ def extract_files(file_name:str, file_type:str, read_path:Path=raw_dir, extract_
             return df
 
 
+        #=================================
         # Extract if the compacted file is a tar csv
+        #=================================
         elif file_type == 'tar_csv':
             logger.info(f"Extracting {file_name} to {path_extract}")
             with tarfile.open(path_read, "r") as tar:

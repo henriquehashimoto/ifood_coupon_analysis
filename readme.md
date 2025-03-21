@@ -1,12 +1,11 @@
-# Case Técnico iFood - Análise de Estratégia de Cupons
+# Análise de Estratégia de Cupons
 
 Please, read until the end to better understand the decision making and thought process.
 
 
-This repository contains my solution for iFood's Data Analytics technical case, focused on analyzing an A/B test of a coupon strategy for user retention.
 
 
-### Estrutura do Projeto
+### Project Structure
 
 ```bash
 ifood_data_analyst_case/
@@ -52,20 +51,25 @@ ifood_data_analyst_case/
 
 ```bash
 # Clone the repo
-git clone https://github.com/seu-usuario/ifood-case-tecnico.git
-cd ifood-case-tecnico
+git clone https://github.com/henriquehashimoto/ifood_coupon_analysis.git
+cd ifood_coupon_analysis
 ```
 
-# Instale as dependências
+# Create virtual environment and install dependencies
 ```bash
 # First, let's install the packages necessary
-poetry install 
+python -m virtualenv .venv
 
 # To enter the poetry env with the packages installed
-poetry shell 
+source .venv/bin/activate 
+# Or if you are on windows
+.\.venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
 
 # Create kernel for notebooks; may need to restart kernel or the whole vscode/cursor/IDE of choice
-poetry run python -m ipykernel install --user --name=ifood_case_env --display-name "Python (iFood Env)" 
+python -m ipykernel install --user --name=ifood_coupons_env --display-name "Python (iFood Env)" 
 ```
 
 
@@ -74,17 +78,17 @@ poetry run python -m ipykernel install --user --name=ifood_case_env --display-na
 ### Main 
 
 - Execute main file with:
-- `poetry run python main.py`
+- `python main.py`
   - This will execute the "ETL" files on *src/data/*:
   - `data_extraction.py`
   - `data_transformation.py`
   - `data_load.py`
   - This should execute ~10min to 15min
   - Now, you shoud have all necessary files for the rest of the analysis
-- Now you can see the notebooks 
-  - `poetry run jupyter notebook notebooks/01_data_exploratory.ipynb`
-  - `poetry run jupyter notebook notebooks/02_ab_test_analysis.ipynb`
-  - `poetry run jupyter notebook notebooks/03_segmentations.ipynb`
+- Now you can see the notebooks - To use them, enable the recent-created Kernel `Python (iFood Env)`
+  - `notebooks/01_data_exploratory.ipynb`
+  - `notebooks/02_ab_test_analysis.ipynb`
+  - `notebooks/03_segmentations.ipynb`
 
 
 # How this case was built
@@ -93,8 +97,8 @@ poetry run python -m ipykernel install --user --name=ifood_case_env --display-na
 2. Verified data and understood it, also noted what changes was necesary for transformation script, on `notebooks/01_data_exploratory.ipynb`
 3. Created data `src/data/transformation` to clean and improve the datasets
 4. Created `src/data/data_load` to save transformed data
-5. Done the analysis of the A/B Test on `02_ab_test_analysis.ipynb`
-6. Created segmentation on `03_segmentations.ipynb`
+5. Done the analysis of the A/B Test on `notebooks/02_ab_test_analysis.ipynb`
+6. Created segmentation on `notebooks/03_segmentations.ipynb`
 
 
 ## Possible future iterations 
@@ -114,7 +118,7 @@ Besides that, transform into tables for better and easier consumption.
 
 IFood business open the door for multiple opportunity for data analysis, being a company with such a vast combination of possibilites, is hard to list only a couple of analysis that we could do. 
 
-But narrowing down, here a list of the "next steps" that I'd recommend to do with this analysis (besides the proposed A/B test): 
+But narrowing down, here a list of the "next steps" that I'd recommend to do with this analysis (besides the proposed A/B test and segmentation): 
 
 - Do the same segmentation and **deep analysis** that I did for the group "Hybrid Segments" **for the other groups**
 - **Use K-means** to create segmentation based on similar behavior in a determined metric
