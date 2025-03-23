@@ -30,7 +30,7 @@ def handle_na_data(df:pd.DataFrame, columns, action, add_params=None):
         df (pd.DataFrame): DataFrame to handle missing data
         columns (list): List of columns to handle missing data
         action (str): Action to take on missing data 
-        add_params (any, optional): Value to fill missing data with (required for 'fill' action)
+        add_params (any, optional): Value to fill missing data with (required for 'fill' action) or to drop mising values
 
     Returns:
         pd.DataFrame: DataFrame with handled missing data
@@ -73,7 +73,9 @@ def convert_column(df:pd.DataFrame, conversions:tuple):
         ValueError: If conversion fails for any column.
     """
     
+    #================================
     # Validate conversions input
+    #================================
     if not isinstance(conversions, list):
         raise ValueError("`conversions` must be a list of tuples.")
     
@@ -83,7 +85,10 @@ def convert_column(df:pd.DataFrame, conversions:tuple):
             
     logger.info(f"Start of the conversion of columns data type")
 
+
+    #================================
     # For each column + data type
+    #================================
     for column, dtype in conversions:
         if column not in df.columns:
             logging.warning(f"Column '{column}' not found in DataFrame. Skipping.")
@@ -144,7 +149,7 @@ def remove_duplicates(df: pd.DataFrame, column: str, column_deduplicate: str):
     # Sort the DataFrame by the column_deduplicate in descending order
     df = df.sort_values(by=column_deduplicate, ascending=False)
 
-    # Remove duplicates from the column, keeping the first occurrence (which is the most recent)
+    # Remove duplicates from the column, keeping the first occurrence (which is the most recent, with dates)
     df = df.drop_duplicates(subset=column, keep='first')
 
     logger.info(f"Duplicates removed from column {column}")

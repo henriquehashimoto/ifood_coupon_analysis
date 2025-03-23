@@ -20,15 +20,23 @@ def load_data(df: pd.DataFrame, file_name:str):
     Returns:
         None, it loads the data into a new parquet file
     """
+    
+    #================================
     # Verify if is a dataframe
+    #================================
     if not isinstance(df, pd.DataFrame):
         raise ValueError("Input must be a pandas DataFrame")
 
+    #================================
     # Verify if is empty
+    #================================
     if df.empty:
         logger.warning("DataFrame is empty, no data to load")
         return
 
+    #================================
+    # Load data in a parquet file at "processed" folder
+    #================================
     try:
         logger.info("Loading data into Parquet file")
 

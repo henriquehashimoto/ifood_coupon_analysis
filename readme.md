@@ -105,7 +105,7 @@ This solution was developed as part of a technical case study, and due to time c
 
 #### ENGINEERING FUTURE CHANGELOG
 
-- **Configuration Management** - Move hardcoded values to configuration files. Ex.: URLS dictionary created in `data_extraction.py`. This would provide a single source of truth for configuration values
+- **Configuration Management** - Move hardcoded values to configuration files. Ex.: URLS dictionary created in `data_extraction.py`. This would provide a single source of truth for configuration values. And connect direct to the company S3 bucket instead of a file
 - **Error Handling and Validation** -  Implement more robust error handling with specific exception types. Ex.: if "conversions" variable at `main.py` is listing a column name wrong, this must be treated somehow. Usage of Pydantic or Pandera
 - **Logging Enhancements** - Implement structured logging with phisical files as well
 - **Performance Optimization** - Use of pyspark (if moved to a cluster) or duckDB (if stays in single node) on the ETL and `main.py` 

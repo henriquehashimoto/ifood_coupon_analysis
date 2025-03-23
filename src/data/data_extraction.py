@@ -53,13 +53,17 @@ def download_file(url: str, filename:str, dir:Path=raw_dir):
             logger.info(f"File already exists: {filepath}")
             return True
     
-        response = requests.get(url, stream=True)
-        response.raise_for_status()    
+        else:
+            # GET request to get data from S3
+            response = requests.get(url, stream=True)
+            # Raise an exception if the HTTP request returned an unsuccessful status code
+            response.raise_for_status()    
 
-        with open(filepath, 'wb') as f:
-            for chunk in response.iter_content(chunk_size=8192):
-                f.write(chunk)
-        return filepath
+            with open(filepath, 'wb') as f:
+                # Open the file with "write - binary" mode and write each 8192 bytes
+                for chunk in response.iter_content(chunk_size=8192):
+                    f.write(chunk)
+            return filepath
 
     except Exception as e:
         logger.error(f"Error downloading file {url}: {e}")
@@ -72,13 +76,13 @@ def download_file(url: str, filename:str, dir:Path=raw_dir):
 #==============================
 def extract_files(file_name:str, file_type:str, read_path:Path=raw_dir, extract_path:Path=extract_dir):
     """
-    Process gzipped CSV file
+    Process gzipped files
 
     Parameters:
         filename: name of the file to be extracted
         file_type: file format 
         read_path: path - path of the file to be read
-        extract_path: path - path of the extraction folder
+        extract_path: path - path of the extraction folder -> send to "extracted folder" 
 
     Returns:
         Extract file in the "data/extracted/" folder as parquet to standardize, optimize space and performance
