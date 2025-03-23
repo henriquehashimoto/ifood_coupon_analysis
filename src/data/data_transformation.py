@@ -121,8 +121,6 @@ def convert_column(df:pd.DataFrame, conversions:tuple):
         logger.info(f"Column {column} converted to {dtype} data type")
 
     return df
-    
-    
 
 
 
@@ -153,22 +151,3 @@ def remove_duplicates(df: pd.DataFrame, column: str, column_deduplicate: str):
     return df
 
 
-
-
-# # Example DataFrame
-# data = {
-#     'A': [1, 2, None, 4],
-#     'B': [None, 2, 3, 4],
-#     'C': [1, 2, 3, 4]
-# }
-# df = pd.DataFrame(data)
-
-
-# if __name__ == "__main__":
-#     # handle_na_data(df, ['A','B'], 'fill', 0)
-#     df = pd.DataFrame({'date': ['2022-01-01 15:30:22', '2022-01-02 15:30:22'], 'value': [1.2, 3.4]})
-#     df2 = convert_column(df, 'date', 'date')
-#     df3 = convert_column(df, 'value', 'int')
-#     print(df2)
-#     print(df3)
-    
