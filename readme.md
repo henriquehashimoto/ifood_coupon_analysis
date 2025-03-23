@@ -38,8 +38,6 @@ ifood_data_analyst_case/
 │   └── tests.ipynb                 # Test notebook
 │
 ├── main.py                         # Main ETL orchestration script
-├── poetry.lock                     # Poetry dependency lock file
-├── pyproject.toml                  # Project configuration and dependencies
 └── readme.md                       # Project documentation
 ```
 
